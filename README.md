@@ -62,7 +62,7 @@ compute1.openstack.org ansible_host=compute1.openstack.org
 compute2.openstack.org ansible_host=compute2.openstack.org
 ```
 
-The archiecture of this module makes easy to compose roles.
+The architecture of this module makes easy to compose roles.
 Any deployment can be different, by just editing deployment.yaml and the
 inventory.
 
