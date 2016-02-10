@@ -7,6 +7,9 @@
 - name: install puppetlabs-release
   yum: name=https://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm state=present
 
+- name: install epel
+  yum: name=epel-release state=present
+
 - name: puppet and dependencies
   yum: name={{ item }} state=latest
   with_items:
