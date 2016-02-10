@@ -4,7 +4,11 @@
 sudo dnf install -y redhat-rpm-config python-devel wget
 sudo dnf group install -y "C Development Tools and Libraries"
 
-# install Ansible
-pip install ansible --user
+# install Ansible and dependencies
+pip install ansible shade --user
 
-ansible-playbook -i inventory openstack.yaml
+# Deployment
+ansible-playbook -i inventory openstack.yaml --skip-tags "validation"
+
+# Validation
+ansible-playbook -i inventory openstack.yaml --tags "validation"

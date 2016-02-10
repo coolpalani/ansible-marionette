@@ -1,15 +1,19 @@
 ---
 # this playbook is common to all nodes.
 
+##################
+# install puppet #
+##################
 - name: install puppetlabs-release
   yum: name=https://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm state=present
 
 - name: puppet and dependencies
   yum: name={{ item }} state=latest
   with_items:
-    - puppet
     - libxml2-devel
     - libxslt-devel
+    - puppet
+    - python-pip
     - ruby-devel
     - rubygems
     - wget
@@ -31,6 +35,9 @@
       :yaml:
         :datadir: /etc/puppet/hieradata
 
+###################
+# puppet manifest #
+###################
 - name: create /etc/puppet/manifests
   file: path=/etc/puppet/manifests state=directory
 
@@ -44,6 +51,12 @@
       }
       hiera_include('classes')
 
+###############
+# puppet data #
+###############
+- name: cleanup /etc/puppet/hieradata
+  file: path=/etc/puppet/hieradata state=absent
+
 - name: create /etc/puppet/hieradata
   file: path=/etc/puppet/hieradata state=directory
 
@@ -55,7 +68,46 @@
       ---
       classes:
         - openstack_integration
+        - openstack_integration::repos
 
+- name: create /etc/puppet/hieradata/{{ puppet_role }}
+  file: path=/etc/puppet/hieradata/{{ puppet_role }} state=directory
+
+- name: create hieradata/{{ puppet_role }}/common
+  blockinfile:
+    dest: /etc/puppet/hieradata/{{ puppet_role }}/common.yaml
+    create: yes
+    marker: "# common classes definition #"
+    block: |
+      ---
+      classes:
+
+- name: add hiera validation data
+  blockinfile:
+    dest: /etc/puppet/hieradata/common.yaml
+    marker: "# hiera validation #"
+    insertbefore: "classes:"
+    block: |
+      hiera_validate: true
+
+- name: validate hiera is working
+  shell: "hiera hiera_validate -c /etc/puppet/hiera.yaml | grep -q true"
+  register: hiera_result
+  failed_when: "hiera_result.rc != 0"
+
+- name: create /etc/facter/facts.d
+  file: path=/etc/facter/facts.d state=directory
+
+- name: create facter environment
+  blockinfile:
+    dest: /etc/facter/facts.d/environment.txt
+    create: yes
+    block: |
+      role={{ puppet_role }}
+
+##################
+# puppet modules #
+##################
 - name: install r10k
   gem: name=r10k user_install=no
 

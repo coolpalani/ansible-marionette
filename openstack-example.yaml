@@ -3,6 +3,8 @@
   become: yes
   roles:
     - common
+    - mysql
+    - keystone
     - puppet_run
   vars:
     puppet_role: controller
