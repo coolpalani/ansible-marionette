@@ -1,5 +1,16 @@
 #!/bin/bash -ex
 
+# make sure environment is ready
+if [ ! -f inventory ]; then
+    echo "inventory file does not exist. Please read README if you need help to create it."
+    exit 1
+fi
+
+if [ ! -f openstack.yaml ]; then
+    echo "openstack.yaml file does not exist. Please read README if you need help to create it."
+    exit 1
+fi
+
 # install dependencies to deploy Ansible
 sudo dnf install -y redhat-rpm-config python-devel wget
 sudo dnf group install -y "C Development Tools and Libraries"
