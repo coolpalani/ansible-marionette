@@ -1,0 +1,14 @@
+---
+# this playbook is common to all nodes.
+
+- name: install puppet
+  script: install_puppet.sh
+
+- name: configure hiera
+  script: configure_hiera.sh
+
+- name: install puppet modules
+  script: install_modules.sh
+
+- name: run puppet
+  puppet: manifest=/etc/puppet/manifests/site.pp

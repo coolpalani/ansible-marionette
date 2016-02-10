@@ -1,0 +1,11 @@
+---
+# run puppet
+# note: will be replaced by ansible/puppet module once
+# upstream is ready (some pull requests in progress)
+
+- name: run puppet
+  script: run_puppet.sh
+  register: puppet_result
+
+- debug:
+    msg: "{{ puppet_result.stdout_lines }}"

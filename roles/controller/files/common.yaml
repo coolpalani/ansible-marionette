@@ -1,0 +1,7 @@
+---
+
+classes:
+  - openstack_integration
+  - openstack_integration::repos
+  - openstack_integration::mysql
+  - openstack_integration::keystone

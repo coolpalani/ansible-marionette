@@ -1,0 +1,9 @@
+---
+
+# file modules looks broken now
+# https://github.com/ansible/ansible-modules-core/issues/2585
+- name: prepare hiera role directory
+  shell: "mkdir -p /etc/puppet/hieradata/{{ puppet_role }}"
+
+- name: copy controller.yaml to hieradata
+  copy: src=common.yaml dest=/etc/puppet/hieradata/controller/common.yaml
