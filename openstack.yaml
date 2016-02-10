@@ -1,9 +1,8 @@
 ---
-- hosts: controllers 
-  become_method: sudo
+- hosts: controllers
+  become: yes
   roles:
     - common
-    - controller
     - puppet_run
   vars:
     puppet_role: controller
