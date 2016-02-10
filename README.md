@@ -82,6 +82,14 @@ Steps of deployment
 * After the deployment, services will be validated.
 
 
+
+Demo
+----
+
+A demo of a controller deployment + validation:
+https://asciinema.org/a/eecud0zny7gd3pny1ht27cc6w
+
+
 Limitations
 -----------
 
