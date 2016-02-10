@@ -58,7 +58,7 @@ An example is given in inventory_example.
 controller.openstack.org ansible_host=controller.openstack.org
 
 [computes]
-compute1.openstack.org ansible_host=compute2.openstack.org
+compute1.openstack.org ansible_host=compute1.openstack.org
 compute2.openstack.org ansible_host=compute2.openstack.org
 ```
 
