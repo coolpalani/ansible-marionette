@@ -7,7 +7,7 @@ Orchestrate with Ansible a complex deployment driven by Puppet OpenStack modules
 Quickstart
 ----------
 
-Prepare your environment by editing openstack.yaml file.
+Prepare your environment by editing deployment.yaml file.
 An example is provided with openstack-example.yaml.
 This is a simple example that will deploy and validate OpenStack Keystone.
 ```yaml
@@ -63,7 +63,7 @@ compute2.openstack.org ansible_host=compute2.openstack.org
 ```
 
 The archiecture of this module makes easy to compose roles.
-Any deployment can be different, by just editing openstack.yaml and the
+Any deployment can be different, by just editing deployment.yaml and the
 inventory.
 
 Run the deployment and validation:

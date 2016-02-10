@@ -6,8 +6,8 @@ if [ ! -f inventory ]; then
     exit 1
 fi
 
-if [ ! -f openstack.yaml ]; then
-    echo "openstack.yaml file does not exist. Please read README if you need help to create it."
+if [ ! -f deployment.yaml ]; then
+    echo "deployment.yaml file does not exist. Please read README if you need help to create it."
     exit 1
 fi
 
@@ -19,7 +19,7 @@ sudo dnf group install -y "C Development Tools and Libraries"
 pip install ansible shade --user
 
 # Deployment
-ansible-playbook -i inventory openstack.yaml --skip-tags "validation"
+ansible-playbook -i inventory deployment.yaml --skip-tags "validation"
 
 # Validation
-ansible-playbook -i inventory openstack.yaml --tags "validation"
+ansible-playbook -i inventory deployment.yaml --tags "validation"
