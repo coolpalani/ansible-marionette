@@ -1,0 +1,4 @@
+- name: install python development components
+  yum:
+    name: python-devel
+    state: installed

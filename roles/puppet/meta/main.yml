@@ -1,0 +1,3 @@
+dependencies:
+  # we need epel for python-pip
+  - epel
