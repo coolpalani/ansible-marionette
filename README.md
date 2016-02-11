@@ -159,7 +159,8 @@ Example in *roles/mysql/defaults/main.yaml*:
 mysql_max_connections: 200
 ```
 
-This value will be set for mysql::server::override_options in */etc/puppet/hieradata/common.yaml*
+This value will be set for mysql::server::override_options in */etc/puppet/hieradata/common.yaml*.
+
 Each parameters added in *roles/mysql/defaults/main.yaml* need to match with an
 actual Puppet parameter in the class, defined in
 *roles/mysql/install/tasks/main.yaml*.
