@@ -1,0 +1,12 @@
+---
+# Extra Hiera parameters specific to a profile
+hiera_params_extra:
+
+# Though it's not recommanded, you can add any Puppet class
+# in this block.
+# The best practice is to create a role for the app you want to deploy,
+# and add the role to the profile.
+#
+hiera_classes_extra:
+#   classes:
+#     - mymodule::myclass

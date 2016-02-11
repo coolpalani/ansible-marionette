@@ -52,9 +52,14 @@ Each role has in charge of:
 * Validate that the role is actually working post-deployment, by service
   validation.
 
+__Profiles__
+
+A profile has in charge of deploying a set of roles.
+Example of profiles: controller, compute, storage, network.
+
 __Advanced deployments__
 
-Now we know what is *Reference Architecture* and *roles*, we need to understand
+Now we know what is *Reference Architecture*, *profiles* and *roles*, we need to understand
 what are advances deployments.
 
 Advances deployments are specific architectures, that fit with specific
@@ -145,6 +150,65 @@ environments.
 
 This section is work in progress, since the feature is still under development.
 Documentation will come in a next iteration.
+
+
+__Customize role parameters__
+
+Each role can contain parameters.
+Example in *roles/mysql/defaults/main.yaml*:
+
+```yaml
+---
+mysql_max_connections: 200
+```
+
+This value will be set for mysql::server::override_options in */etc/puppet/hieradata/common.yaml*
+Each parameters added in *roles/mysql/defaults/main.yaml* need to match with an
+actual Puppet parameter in the class, defined in
+*roles/mysql/install/tasks/main.yaml*.
+
+That's a level of customization that allow to add standard parameters, so users
+just have to change the value of the parameter if needed.
+
+
+__Customize profile with advanced scenario__
+
+
+* If the role does not provide the parameter you need (ie: not in
+  *roles/mysql/defaults/main.yaml*).
+* If you need to apply some parameters for all roles in a profile (ie: a
+  specific password).
+* If you want to add custom Puppet classes in a profile, that are not supported
+  by existing roles.
+
+Then you'll like it. Edit *roles/profile/controller/defaults/main.yaml* (example
+with controller):
+
+```yaml
+---
+# Extra Hiera parameters specific to a profile
+hiera_params_extra: |
+  keystone::token_expiration: 3000
+
+# Though it's not recommanded, you can add any Puppet class
+# in this block.
+# The best practice is to create a role for the app you want to deploy,
+# and add the role to the profile.
+#
+hiera_classes_extra:
+#   classes:
+#     - mymodule::myclass
+```
+
+That way, you can:
+
+* Define custom Puppet parameters at a role level
+* Define custom Puppet parameters at a profile level
+* Define custom Puppet classes at a profile level
+
+
+Note: if you define a Puppet class, you need to make sure the module is
+installed. This repository is installing modules tested by OpenStack only.
 
 
 Limitations
