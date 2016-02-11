@@ -194,8 +194,8 @@ hiera_params_extra: |
 # and add the role to the profile.
 #
 hiera_classes_extra:
-#   classes:
-#     - mymodule::myclass
+   classes:
+     - mymodule::myclass
 ```
 
 That way, you can:
