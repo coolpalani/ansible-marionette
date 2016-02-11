@@ -1,0 +1,7 @@
+---
+keystone_mysql_password: keystone
+keystone_verbose: true
+keystone_debug: true
+keystone_database_connection: 'mysql+pymysql://keystone:keystone@127.0.0.1/keystone'
+keystone_admin_token: admin_token
+keystone_admin_password: a_big_secret

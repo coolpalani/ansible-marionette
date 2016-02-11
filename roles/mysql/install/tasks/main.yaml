@@ -6,7 +6,7 @@
     insertafter: 'classes:'
     block: |
       # deploy mysql server
-        - openstack_integration::mysql
+        - mysql::server
 
 - name: include mysql data in hiera common
   blockinfile:

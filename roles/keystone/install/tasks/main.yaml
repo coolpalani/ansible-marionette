@@ -6,4 +6,27 @@
     insertafter: 'classes:'
     block: |
       # deploy keystone server
-        - openstack_integration::keystone
+        - keystone
+        - keystone::client
+        - keystone::db::mysql
+        - apache
+        - keystone::wsgi::apache
+        - keystone::roles::admin
+        - keystone::endpoint
+
+- name: include keystone data in hiera common
+  blockinfile:
+    dest: /etc/puppet/hieradata/common.yaml
+    marker: "# keystone data #"
+    insertbefore: 'classes:'
+    block: |
+      keystone::db::mysql::password: {{ keystone_mysql_password }}
+      keystone::verbose: {{ keystone_verbose }}
+      keystone::debug: {{ keystone_debug }}
+      keystone::database_connection: {{ keystone_database_connection }}
+      keystone::admin_token: {{ keystone_admin_token }}
+      keystone::service_name: httpd
+      keystone::wsgi::apache::ssl: false
+      keystone::roles::admin::email: test@example.tld
+      keystone::roles::admin::password: {{ keystone_admin_password }}
+      keystone::endpoint::default_domain: admin
