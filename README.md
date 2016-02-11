@@ -86,7 +86,7 @@ Prepare *deployment.yaml*. An example is provided, please look at it.
     # Use controller role from Reference Architecture
     - profile/controller
 
-# keep it at the end so we run puppet at the very end.
+# order does matter here, before validation
 - hosts: all
   roles:
     - puppet-run
@@ -100,6 +100,22 @@ Prepare *deployment.yaml*. An example is provided, please look at it.
 # 
 #  create host groups as many profiles we support.
 # Note: an host group can have multiple profiles.
+
+# order does matter here, before validation
+- hosts: all
+  roles:
+    - puppet-run
+
+# after puppet runs, we want to validate services
+- hosts: controllers
+  roles:
+    - profile/controller/validate
+
+# Example with future profiles
+#
+# - hosts: computes
+#   roles:
+#     - profile/compute/validate
 ```
 
 Now, prepare *inventory* file. An example is provided, please look at it.
