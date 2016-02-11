@@ -2,4 +2,8 @@
 - hosts: controllers
   roles:
     - profile/controller
-    - puppet_run
+
+# keep it at the end so we run puppet at the very end.
+- hosts: all
+  roles:
+    - puppet-run
