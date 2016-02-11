@@ -1,0 +1,2 @@
+---
+mysql_max_connections: 200
