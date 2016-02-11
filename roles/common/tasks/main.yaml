@@ -65,10 +65,9 @@
   blockinfile:
     dest: /etc/puppet/hieradata/{{ puppet_role }}/common.yaml
     create: yes
-    marker: "# common classes definition #"
+    marker: "# specific to {{ puppet_role }} #"
     block: |
       ---
-      classes:
 
 - name: add hiera validation data
   blockinfile:
