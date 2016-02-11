@@ -2,17 +2,7 @@
 - name: include hiera extra classes snippet
   blockinfile:
     dest: /etc/puppet/hieradata/{{ puppet_role }}/common.yaml
-    insertafter: '---'
+    insertafter: "---"
     block: |
-      # {{ puppet_role }} extra classes
       {{ hiera_classes_extra }}
-      # End of {{ puppet_role }} extra classes
-
-- name: include hiera extra params snippet
-  blockinfile:
-    dest: /etc/puppet/hieradata/{{ puppet_role }}/common.yaml
-    insertafter: '# End of {{ puppet_role }} extra classes'
-    block: |
-      # {{ puppet_role }} extra classes
       {{ hiera_params_extra }}
-      # End of {{ puppet_role }} extra classes

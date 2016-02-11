@@ -2,7 +2,10 @@
 # Extra Hiera parameters specific to a profile
 hiera_params_extra:
 # hiera_params_extra: |
-#   keystone::token_expiration: 3000
+#    keystone::token_expiration: 3000
+#    keystone::config::keystone_config:
+#      DEFAULT/foo:
+#        value: bar
 
 # Though it's not recommanded, you can add any Puppet class
 # in this block.
@@ -11,5 +14,5 @@ hiera_params_extra:
 #
 hiera_classes_extra:
 # hiera_classes_extra: |
-#   classes:
-#     - mymodule::myclass
+#    classes:
+#      - keystone::config
