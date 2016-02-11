@@ -7,3 +7,14 @@
     block: |
       # deploy mysql server
         - openstack_integration::mysql
+
+- name: include mysql data in hiera common
+  blockinfile:
+    dest: /etc/puppet/hieradata/common.yaml
+    marker: "# mysql data #"
+    insertbefore: 'classes:'
+    block: |
+      mysql::server::override_options:
+        mysqld:
+          max_connections: {{ mysql_max_connections }}
+          restart: true
