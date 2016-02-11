@@ -86,6 +86,11 @@ Prepare *deployment.yaml*. An example is provided, please look at it.
     # Use controller role from Reference Architecture
     - profile/controller
 
+# keep it at the end so we run puppet at the very end.
+- hosts: all
+  roles:
+    - puppet-run
+
 # Example with future profiles
 #
 # - hosts: computes
