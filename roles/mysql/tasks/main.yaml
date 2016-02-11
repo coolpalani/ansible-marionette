@@ -6,6 +6,7 @@
     marker: "# mysql class #"
     insertafter: 'classes:'
     block: |
+      # deploy mysql server
         - openstack_integration::mysql
 
 - name: validate mysql is working

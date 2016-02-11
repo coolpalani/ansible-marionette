@@ -6,6 +6,7 @@
     marker: "# keystone class #"
     insertafter: 'classes:'
     block: |
+      # deploy keystone server
         - openstack_integration::keystone
 
 - name: install shade
