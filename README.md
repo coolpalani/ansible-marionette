@@ -148,9 +148,6 @@ Advanced
 This is the right section if you want to learn how to deploy complex
 environments.
 
-This section is work in progress, since the feature is still under development.
-Documentation will come in a next iteration.
-
 
 __Customize role parameters__
 
