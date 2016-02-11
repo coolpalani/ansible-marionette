@@ -8,7 +8,7 @@ Orchestrate with Ansible a complex deployment driven by Puppet OpenStack modules
 
 1. [Overview - What is ansible-marionette?](#overview)
 2. [Quickstart with reference architecture](#quickstart)
-3. [Advanced deployment with custum architecture](#advanced)
+3. [Advanced deployment with custom architecture](#advanced)
 4. [Limitations](#limitations)
 
 
