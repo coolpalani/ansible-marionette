@@ -18,8 +18,5 @@ sudo dnf group install -y "C Development Tools and Libraries"
 # install Ansible and dependencies
 pip install ansible shade --user
 
-# Deployment
-ansible-playbook -i inventory deployment.yaml --skip-tags "validation"
+ansible-playbook -i inventory deployment.yaml
 
-# Validation
-ansible-playbook -i inventory deployment.yaml --tags "validation"
