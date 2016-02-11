@@ -39,7 +39,7 @@ Each profile has in charge of including the Ansible roles we will deploy.
 
 __Roles__
 
-A role is defined by an Ansible role, in 'roles' directory
+A role is defined by an Ansible role, in 'roles' directory.
 A role is an application and should be isolated from any other application
 (think containers).
 
