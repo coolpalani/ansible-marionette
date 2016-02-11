@@ -9,6 +9,8 @@
         - openstack_integration::mysql
 
 - name: validate mysql is working
-  mysql_db: name=dbtest state=present
+  mysql_db:
+    name: dbtest
+    state: present
   tags:
     - validation

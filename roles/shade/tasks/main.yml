@@ -1,0 +1,4 @@
+- name: install shade
+  pip: name=shade
+  tags:
+    - validation
