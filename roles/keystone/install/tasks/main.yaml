@@ -1,0 +1,8 @@
+---
+- name: include keystone hiera snippet
+  blockinfile:
+    dest: /etc/puppet/hieradata/controller/common.yaml
+    marker: "# keystone class #"
+    insertafter: 'classes:'
+    block: |
+        - openstack_integration::keystone

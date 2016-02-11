@@ -1,6 +1,5 @@
 ---
-
-- name: include mysql puppet classes in hiera common
+- name: include mysql hiera snippet
   blockinfile:
     dest: /etc/puppet/hieradata/common.yaml
     marker: "# mysql class #"
@@ -8,10 +7,3 @@
     block: |
       # deploy mysql server
         - openstack_integration::mysql
-
-- name: validate mysql is working
-  mysql_db:
-    name: dbtest
-    state: present
-  tags:
-    - validation
