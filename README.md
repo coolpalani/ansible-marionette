@@ -27,8 +27,8 @@ but also complex deployments with custom designs.
 
 __Reference architecture__
 
-A reference architecture is a set of pre-defined roles, that already contain
-some services. Deploying the reference architecture will help to deploy
+A reference architecture is a set of pre-defined profiles, that already contain
+some roles. Deploying the reference architecture will help to deploy
 out-of-the-box OpenStack, in a standard and tested way.
 
 The reference architecture is defined in [profile
