@@ -60,9 +60,9 @@ Example of profiles: controller, compute, storage, network.
 __Advanced deployments__
 
 Now we know what is *Reference Architecture*, *profiles* and *roles*, we need to understand
-what are advances deployments.
+what are advanced deployments.
 
-Advances deployments are specific architectures, that fit with specific
+Advanced deployments are specific architectures, that fit with specific
 use-cases. They require to break standards and install some services on some
 nodes and isolate other ones. They don't fit with *Reference architecture* and
 that is why this project can be useful: to compose yourself what you want to
