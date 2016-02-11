@@ -10,6 +10,7 @@ Orchestrate with Ansible a complex deployment driven by Puppet OpenStack modules
 2. [Quickstart with reference architecture](#quickstart)
 3. [Advanced deployment with custom architecture](#advanced)
 4. [Limitations](#limitations)
+5. [Demo](#demo)
 
 
 
@@ -215,3 +216,9 @@ Limitations
 * Currently, it only works on Red Hat systems (centos7, fedora23 and rhel7).
 * This is a proof-of-concept, we only support a few services now (mysql,
   keystone). But more is coming soon.
+
+
+Demo
+----
+
+Checkout the demo: https://asciinema.org/a/40j0k44gz2iqrpu99qv70fkou
