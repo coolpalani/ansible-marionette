@@ -3,7 +3,10 @@
   roles:
     - profile/controller
 
-# keep it at the end so we run puppet at the very end.
 - hosts: all
   roles:
-    - puppet-run
+    - puppet_run
+
+- hosts: controllers
+  roles:
+    - profile/controller/validate

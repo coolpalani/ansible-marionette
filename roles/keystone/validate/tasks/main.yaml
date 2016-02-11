@@ -1,23 +1,6 @@
 ---
-
-- name: include keystone puppet classes in hiera common
-  blockinfile:
-    dest: /etc/puppet/hieradata/common.yaml
-    marker: "# keystone class #"
-    insertafter: 'classes:'
-    block: |
-      # deploy keystone server
-        - openstack_integration::keystone
-
-- name: install shade
-  pip: name=shade
-  tags:
-    - validation
-
 - name: create /etc/openstack
   file: path=/etc/openstack state=directory
-  tags:
-    - validation
 
 - name: generate clouds.yaml
   blockinfile:
@@ -32,12 +15,7 @@
             username: admin
             password: a_big_secret
           region_name: RegionOne
-  tags:
-    - validation
-
 
 - name: validate keystone is working
   os_auth:
     cloud: openstack
-  tags:
-    - validation
