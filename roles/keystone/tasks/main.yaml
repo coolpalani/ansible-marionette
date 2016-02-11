@@ -1,8 +1,8 @@
 ---
 
-- name: include keystone hiera snippet
+- name: include keystone puppet classes in hiera common
   blockinfile:
-    dest: /etc/puppet/hieradata/controller/common.yaml
+    dest: /etc/puppet/hieradata/common.yaml
     marker: "# keystone class #"
     insertafter: 'classes:'
     block: |

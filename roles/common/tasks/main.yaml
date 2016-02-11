@@ -1,20 +1,6 @@
 ---
 # this playbook is common to all nodes.
 
-- name: configure hiera.yaml
-  blockinfile:
-    dest: /etc/puppet/hiera.yaml
-    create: yes
-    block: |
-      ---
-      :backends:
-        - yaml
-      :hierarchy:
-        - "%{::role}/common"
-        - common
-      :yaml:
-        :datadir: /etc/puppet/hieradata
-
 ###################
 # puppet manifest #
 ###################
@@ -36,6 +22,20 @@
 ###############
 # puppet data #
 ###############
+- name: configure hiera.yaml
+  blockinfile:
+    dest: /etc/puppet/hiera.yaml
+    create: yes
+    block: |
+      ---
+      :backends:
+        - yaml
+      :hierarchy:
+        - "%{::role}/common"
+        - common
+      :yaml:
+        :datadir: /etc/puppet/hieradata
+
 - name: cleanup /etc/puppet/hieradata
   file:
     path: /etc/puppet/hieradata
@@ -94,4 +94,3 @@
     create: yes
     block: |
       role={{ puppet_role }}
-

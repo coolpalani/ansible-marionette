@@ -1,8 +1,8 @@
 ---
 
-- name: include mysql hiera snippet
+- name: include mysql puppet classes in hiera common
   blockinfile:
-    dest: /etc/puppet/hieradata/controller/common.yaml
+    dest: /etc/puppet/hieradata/common.yaml
     marker: "# mysql class #"
     insertafter: 'classes:'
     block: |
