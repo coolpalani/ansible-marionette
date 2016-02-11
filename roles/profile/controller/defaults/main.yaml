@@ -1,7 +1,8 @@
 ---
 # Extra Hiera parameters specific to a profile
 hiera_params_extra:
-  #keystone::token_expiration: 3000
+# hiera_params_extra: |
+#   keystone::token_expiration: 3000
 
 # Though it's not recommanded, you can add any Puppet class
 # in this block.
@@ -9,5 +10,6 @@ hiera_params_extra:
 # and add the role to the profile.
 #
 hiera_classes_extra:
+# hiera_classes_extra: |
 #   classes:
 #     - mymodule::myclass
